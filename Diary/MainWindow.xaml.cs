@@ -19,7 +19,7 @@ namespace Diary
             LoadNotes();
             PopulateNotesList();
         }
-
+        //загрузка
         private void LoadNotes()
         {
             if (File.Exists(notesFile))
