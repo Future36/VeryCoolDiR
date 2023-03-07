@@ -1,9 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using Newtonsoft.Json;
 
 namespace Diary
@@ -13,14 +12,10 @@ namespace Diary
         private List<Note> notes = new List<Note>();
         private DateTime selectedDate = DateTime.Today;
         private string notesFile = "notes.json";
-        private TextBox textTitle;
 
         public MainWindow()
         {
             InitializeComponent();
-
-            textTitle = new TextBox(); // Initialize textTitle
-
             LoadNotes();
             PopulateNotesList();
         }
@@ -51,7 +46,7 @@ namespace Diary
             Note selectedNote = (Note)listNotes.SelectedItem;
             if (selectedNote != null)
             {
-                textTitle.Text = selectedNote.Title; // Use textTitle instead of TitleTextBox
+                textTitle.Text = selectedNote.Title;
                 textDescription.Text = selectedNote.Description;
             }
         }
@@ -60,7 +55,7 @@ namespace Diary
         {
             Note note = new Note
             {
-                Title = textTitle.Text, // Use textTitle instead of TitleTextBox
+                Title = textTitle.Text,
                 Description = textDescription.Text,
                 Date = selectedDate
             };
@@ -73,7 +68,7 @@ namespace Diary
             Note selectedNote = (Note)listNotes.SelectedItem;
             if (selectedNote != null)
             {
-                selectedNote.Title = textTitle.Text; // Use textTitle instead of TitleTextBox
+                selectedNote.Title = textTitle.Text;
                 selectedNote.Description = textDescription.Text;
                 PopulateNotesList();
             }
